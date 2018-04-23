@@ -82,7 +82,7 @@ export default {
   updateTodo ({state, commit}, todo) {
     window.restApi.put('/todo/' + todo.id, todo, res => {
       if (res) {
-        commit('UPDATE_TODO', todo.id)
+        commit('UPDATE_TODO', todo)
       }
     }, error => {
       console.error('updateTodo error:%o', error)

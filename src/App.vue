@@ -66,9 +66,11 @@ export default {
       this.newTodo = ''
     },
     removeCompleted () {
+      this.$store.dispatch('removeCompletedTodos')
       //  TODO  移除所有已完成的todo
     },
     filterTodos (type) {
+      this.$store.dispatch('filterTodos', type)
       //  TODO 设置todo的可见性
     },
     pluralize (word, count) {

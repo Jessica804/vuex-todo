@@ -120,7 +120,6 @@
       }
     },
     put: function(path, body, callback, error){
-      debugger;
       checkCallback(callback, error)
       const reg = /^\/todo\/(\w+)$/
       if(path === '/todos'){
@@ -134,6 +133,7 @@
       }else if(reg.test(path)){
         var id = reg.exec(path)[1]
         body.id = id
+        debugger;
         var result = updateTodo(body)
         if(result){
           callback.call(null, result)

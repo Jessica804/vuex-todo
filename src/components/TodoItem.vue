@@ -1,9 +1,9 @@
 <template>
   <li class="todo">
     <div class="view">
-      <input class="toggle" type="checkbox" v-model="todo.completed" >
+      <input class="toggle" type="checkbox" v-model="todo.completed"  @click="updateTodo(todo)">
       <!--TODO  双击此元素，该todo进入编辑状态，显示下方的input.edit元素-->
-      <label @dblclick="editTodo(todo)" v-show="!todo.editing">{{todo.title}}</label>
+      <label @dblclick="editTodo(todo)" v-show="!todo.editing">{{todo.title}} ++++ {{todo.completed}}</label>
       <!--TODO  点击此元素，删除该todo-->
       <button class="destroy" @click="removeTodo(todo)"></button>
     </div>
@@ -35,6 +35,10 @@ export default {
       this.$store.dispatch('updateTodo', todo)
       this.todoTitle = ''
       todo.editing = false
+    },
+    updateTodo: function (todo) {
+      todo.completed = !todo.completed
+      this.$store.dispatch('updateTodo', todo)
     }
   },
   directives: {

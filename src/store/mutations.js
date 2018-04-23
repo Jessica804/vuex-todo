@@ -50,9 +50,16 @@ export default {
   },
   UPDATE_TODO (state, item) {
     state.todos.forEach(function (todo) {
+      debugger;
       if (todo.id === item.id) {
         todo.title = item.title
+        todo.completed = item.completed
       }
+    })
+  },
+  REMOVE_COMPLETED_TODOS (state) {
+    state.todos = state.todos.filter(function (todo) {
+      return !todo.completed
     })
   }
 }
